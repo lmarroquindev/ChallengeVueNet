@@ -70,6 +70,23 @@ namespace BackendChallenge.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PermissionType", "dbo");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Enfermedad"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Diligencias"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Otros"
+                        });
                 });
 
             modelBuilder.Entity("BackendChallenge.Core.Entities.Permission", b =>
