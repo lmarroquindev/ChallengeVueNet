@@ -21,7 +21,7 @@ namespace BackendChallenge.Data.Mapping
             builder.Property(x => x.PermissionDate).IsRequired();
 
             //Relationships
-            builder.HasOne(x => x.PermissionType).WithOne().HasForeignKey<Permission>(y => y.PermissionTypeId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(t => t.PermissionType).WithMany().HasForeignKey(x => x.PermissionTypeId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
