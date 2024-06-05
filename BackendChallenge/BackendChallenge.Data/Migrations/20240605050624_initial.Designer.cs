@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendChallenge.Data.Migrations
 {
     [DbContext(typeof(ChallengeVueNetContext))]
-    [Migration("20240605030551_initial")]
+    [Migration("20240605050624_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,12 +32,12 @@ namespace BackendChallenge.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("FirstNameEmployee")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("LastNameEmployee")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
@@ -72,6 +72,23 @@ namespace BackendChallenge.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PermissionType", "dbo");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Enfermedad"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Diligencias"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Otros"
+                        });
                 });
 
             modelBuilder.Entity("BackendChallenge.Core.Entities.Permission", b =>

@@ -33,8 +33,8 @@ namespace BackendChallenge.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    FirstNameEmployee = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    LastNameEmployee = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     PermissionTypeId = table.Column<int>(type: "int", nullable: false),
                     PermissionDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -49,6 +49,24 @@ namespace BackendChallenge.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                schema: "dbo",
+                table: "PermissionType",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 1, "Enfermedad" });
+
+            migrationBuilder.InsertData(
+                schema: "dbo",
+                table: "PermissionType",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 2, "Diligencias" });
+
+            migrationBuilder.InsertData(
+                schema: "dbo",
+                table: "PermissionType",
+                columns: new[] { "Id", "Description" },
+                values: new object[] { 3, "Otros" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Permission_PermissionTypeId",
