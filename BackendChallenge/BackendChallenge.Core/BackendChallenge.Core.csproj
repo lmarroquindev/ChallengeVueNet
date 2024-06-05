@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Automapper\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
 </Project>
