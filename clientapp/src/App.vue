@@ -1,15 +1,18 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <ListaPermisos></ListaPermisos>
+  <FormularioPermiso></FormularioPermiso>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import ListaPermisos from "./components/Permission/ListaPermisos.vue";
+import FormularioPermiso from "./components/Permission/FormularioPermiso.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    ListaPermisos,
+    FormularioPermiso,
   },
 };
 </script>
