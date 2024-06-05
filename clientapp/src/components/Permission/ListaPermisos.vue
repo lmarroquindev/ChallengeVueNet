@@ -1,8 +1,13 @@
 <template>
   <div class="container mt-5">
     <h2 class="text-center mb-4">Permission List</h2>
+    <div class="row">
+      <div class="col-auto text-align-left pb-2">
+        <button class="btn btn-primary" @click="openNew()">Add New</button>
+      </div>
+    </div>
     <div class="row justify-content-center">
-      <div class="col-auto">
+      <div class="col-12">
         <table class="table table-bordered table-hover table-striped">
           <thead class="thead-dark">
             <tr>
@@ -22,12 +27,20 @@
               <td>{{ permiso.permissionType.description }}</td>
               <td>{{ formatIsoDate(permiso.permissionDate) }}</td>
               <td>
-                <button
-                  class="btn btn-danger"
-                  @click="eliminarPermiso(permiso.id)"
-                >
-                  Delete
-                </button>
+                <div class="d-flex justify-content-end">
+                  <button
+                    class="btn btn-secondary"
+                    @click="openEdit(permiso.id)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-danger"
+                    @click="eliminarPermiso(permiso.id)"
+                  >
+                    Delete
+                  </button>
+                </div>
               </td>
             </tr>
           </tbody>
@@ -53,6 +66,12 @@ export default {
     };
   },
   methods: {
+    openNew() {
+      this.$emit("new-permission", null);
+    },
+    openEdit(id) {
+      this.$emit("edit-permission", id);
+    },
     async eliminarPermiso(id) {
       const { fetchData } = useFetchData(`Permission/${id}`, "DELETE");
       await fetchData();
