@@ -1,15 +1,43 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <ListaPermisos
+    v-if="showList"
+    @edit-permission="editPermission"
+    @new-permission="newPermission"
+  />
+  <FormularioPermiso v-else :key="id" :id="id" @close-form="cerrarFormulario" />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import ListaPermisos from "./components/Permission/ListaPermisos.vue";
+import FormularioPermiso from "./components/Permission/FormularioPermiso.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      showList: true,
+      id: null,
+    };
+  },
+  methods: {
+    newPermission() {
+      this.showList = false;
+      this.id = null;
+    },
+    editPermission(id) {
+      console.log(id);
+      this.showList = false;
+      this.id = id;
+    },
+    cerrarFormulario() {
+      this.showList = true;
+      this.id = null;
+    },
+  },
   components: {
-    HelloWorld,
+    ListaPermisos,
+    FormularioPermiso,
   },
 };
 </script>
