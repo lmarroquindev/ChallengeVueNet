@@ -5,7 +5,7 @@
     @edit-permission="editPermission"
     @new-permission="newPermission"
   />
-  <FormularioPermiso v-else :id="id" @close-form="cerrarFormulario" />
+  <FormularioPermiso v-else :key="id" :id="id" @close-form="cerrarFormulario" />
 </template>
 
 <script>

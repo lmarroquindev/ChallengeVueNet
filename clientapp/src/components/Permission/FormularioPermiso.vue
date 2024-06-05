@@ -155,9 +155,13 @@ export default {
         const { data, fetchData } = useFetchData(`Permission/${this.id}`);
         await fetchData();
         if (data.value) {
+          debugger;
           this.permissions = data.value;
           const { formatIsoDate } = useFormatDate();
-          this.formattedDate = formatIsoDate(this.formattedDate);
+          this.permissions.permissionDate = await formatIsoDate(
+            this.permissions.permissionDate,
+            true
+          );
         }
       }
     },
