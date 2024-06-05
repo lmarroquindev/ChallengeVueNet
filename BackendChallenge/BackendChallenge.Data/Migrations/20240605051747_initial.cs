@@ -72,8 +72,7 @@ namespace BackendChallenge.Data.Migrations
                 name: "IX_Permission_PermissionTypeId",
                 schema: "dbo",
                 table: "Permission",
-                column: "PermissionTypeId",
-                unique: true);
+                column: "PermissionTypeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

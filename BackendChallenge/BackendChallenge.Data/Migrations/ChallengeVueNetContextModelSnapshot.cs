@@ -48,8 +48,7 @@ namespace BackendChallenge.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PermissionTypeId")
-                        .IsUnique();
+                    b.HasIndex("PermissionTypeId");
 
                     b.ToTable("Permission", "dbo");
                 });
@@ -92,8 +91,8 @@ namespace BackendChallenge.Data.Migrations
             modelBuilder.Entity("BackendChallenge.Core.Entities.Permission", b =>
                 {
                     b.HasOne("BackendChallenge.Core.Entities.PermissionType", "PermissionType")
-                        .WithOne()
-                        .HasForeignKey("BackendChallenge.Core.Entities.Permission", "PermissionTypeId")
+                        .WithMany()
+                        .HasForeignKey("PermissionTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

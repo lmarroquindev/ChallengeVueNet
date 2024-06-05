@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendChallenge.Data.Migrations
 {
     [DbContext(typeof(ChallengeVueNetContext))]
-    [Migration("20240605050624_initial")]
+    [Migration("20240605051747_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,8 +50,7 @@ namespace BackendChallenge.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PermissionTypeId")
-                        .IsUnique();
+                    b.HasIndex("PermissionTypeId");
 
                     b.ToTable("Permission", "dbo");
                 });
@@ -94,8 +93,8 @@ namespace BackendChallenge.Data.Migrations
             modelBuilder.Entity("BackendChallenge.Core.Entities.Permission", b =>
                 {
                     b.HasOne("BackendChallenge.Core.Entities.PermissionType", "PermissionType")
-                        .WithOne()
-                        .HasForeignKey("BackendChallenge.Core.Entities.Permission", "PermissionTypeId")
+                        .WithMany()
+                        .HasForeignKey("PermissionTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
