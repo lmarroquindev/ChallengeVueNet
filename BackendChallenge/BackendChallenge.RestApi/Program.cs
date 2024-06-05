@@ -1,4 +1,8 @@
+using BackendChallenge.Core.Interfaces.Repositories;
+using BackendChallenge.Core.Interfaces.Services;
 using BackendChallenge.Data;
+using BackendChallenge.Data.Repositories;
+using BackendChallenge.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +14,18 @@ builder.Services.AddDbContext<ChallengeVueNetContext>(options =>
    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
    options.EnableSensitiveDataLogging();
 }, ServiceLifetime.Scoped);
+
+
+//automapper inyected
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+//Repositories
+builder.Services.AddTransient<IPermissionTypeRepository, PermissionTypeRepository>();
+builder.Services.AddTransient<IPermissionRepository, PermissionRepository>();
+
+//Services
+builder.Services.AddTransient<IPermissionTypeService, PermissionTypeService>();
+builder.Services.AddTransient<IPermissionService, PermissionService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
