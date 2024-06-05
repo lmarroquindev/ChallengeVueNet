@@ -1,4 +1,5 @@
 ﻿using BackendChallenge.Core.Entities;
+using BackendChallenge.Data.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackendChallenge.Data
@@ -23,6 +24,7 @@ namespace BackendChallenge.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+            DataSeederConfiguration.InitializeSeed(modelBuilder);
         }
     }
 }
