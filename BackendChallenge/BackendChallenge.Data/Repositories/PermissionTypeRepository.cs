@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BackendChallenge.Data.Repositories
 {
     /// <summary>
-    /// A concrete implementation of the IPermissionRepository interface that provides
+    /// A concrete implementation of the IPermissionTypeRepository interface that provides
     /// specialized methods for interacting with the database for the <see cref="PermissionType"/> entity.
     /// This includes retrieving a list of permissions from the database.
     /// </summary>
