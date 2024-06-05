@@ -409,7 +409,6 @@ FodyWeavers.xsd
 *.sublime-workspace
 
 # Archivos de configuración de Vue CLI
-/.env.local
 /.env.*.local
 
 # Archivos de registro de depuración
