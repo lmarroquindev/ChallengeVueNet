@@ -65,10 +65,14 @@
         </div>
       </div>
       <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-secondary me-2" @click="resetForm">
+        <button
+          type="button"
+          class="btn btn-secondary me-2"
+          @click="handlerCancel"
+        >
           Cancel
         </button>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" @click="handlerSave">
           {{ isEdition ? "Update" : "Create" }}
         </button>
       </div>
@@ -78,6 +82,7 @@
 
 <script>
 import { useFetchData } from "@/composables/useFetchData";
+import { useFormatDate } from "@/composables/useFormatDate";
 
 export default {
   name: "FormularioPermiso",
@@ -90,24 +95,70 @@ export default {
         permissionTypeId: null,
         permissionDate: "",
       },
-      isEdition: false,
       permissionsType: [],
     };
   },
+  computed: {
+    isEdition() {
+      return (
+        this !== undefined &&
+        this.id !== undefined &&
+        this.id !== null &&
+        this.id !== 0
+      );
+    },
+  },
+  props: {
+    id: {
+      type: [Number, String],
+      default: null,
+      required: false,
+    },
+  },
   methods: {
-    submitForm() {
-      // Aquí iría la lógica para enviar el formulario al backend
-      // Si esEdicion es true, se actualiza el permiso
-      // Si esEdicion es false, se crea un nuevo permiso
+    handlerCancel() {
+      this.$emit("close-form");
+      this.resetForm();
+    },
+    async handlerSave() {
+      if (this.isEdition === true) {
+        const { fetchData } = useFetchData(
+          `Permission/${this.id}`,
+          "PUT",
+          this.permissions
+        );
+
+        await fetchData();
+      } else {
+        const { fetchData } = useFetchData(
+          `Permission`,
+          "POST",
+          this.permissions
+        );
+
+        await fetchData();
+      }
+
+      this.$emit("close-form");
+      this.resetForm();
     },
     async fetchPermissionsType() {
-      // Obtiene la función fetchData del composable
       const { data, fetchData } = useFetchData("PermissionType");
 
-      // Ejecuta fetchData y actualiza permissionsType con los datos obtenidos
       await fetchData();
       if (data.value) {
         this.permissionsType = data.value;
+      }
+    },
+    async fetchPermissionById() {
+      if (this.isEdition === true) {
+        const { data, fetchData } = useFetchData(`Permission/${this.id}`);
+        await fetchData();
+        if (data.value) {
+          this.permissions = data.value;
+          const { formatIsoDate } = useFormatDate();
+          this.formattedDate = formatIsoDate(this.formattedDate);
+        }
       }
     },
     resetForm() {
@@ -121,7 +172,9 @@ export default {
     },
   },
   mounted() {
+    this.resetForm();
     this.fetchPermissionsType();
+    this.fetchPermissionById();
   },
 };
 </script>
