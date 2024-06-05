@@ -6,11 +6,21 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>987f1523-757c-4cb0-abc2-625fc8535052</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.28">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BackendChallenge.Core\BackendChallenge.Core.csproj" />
+    <ProjectReference Include="..\BackendChallenge.Services\BackendChallenge.Services.csproj" />
   </ItemGroup>
 
 </Project>
