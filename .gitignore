@@ -396,3 +396,29 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Dependencias
+/node_modules
+
+# Carpetas de producción
+/dist
+
+# Archivos de configuración del IDE
+/.idea
+/.vscode
+*.sublime-workspace
+
+# Archivos de configuración de Vue CLI
+/.env.local
+/.env.*.local
+
+# Archivos de registro de depuración
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema de archivos de Mac
+.DS_Store
+
+# Archivos de sistema de Windows
+Thumbs.db
