@@ -4,7 +4,6 @@ using BackendChallenge.Core.Dtos.Output;
 using BackendChallenge.Core.Entities;
 using BackendChallenge.Core.Interfaces.Repositories;
 using BackendChallenge.Core.Interfaces.Services;
-using BackendChallenge.Data.Repositories;
 
 namespace BackendChallenge.Services
 {
@@ -52,11 +51,15 @@ namespace BackendChallenge.Services
                 throw ex;
             }
         }
-        public async Task<PermissionOutputDto> UpdateAsync(PermissionUpdateInputDto input)
+        public async Task<PermissionOutputDto> UpdateAsync(int id,PermissionUpdateInputDto input)
         {
             try
             {
-                Permission entity = await _permissionRepository.GetByIdAsync(input.Id);
+                Permission entity = await _permissionRepository.GetByIdAsync(id);
+
+                if (entity == null)
+                    throw new Exception("The entity doesn't exists.");
+
                 entity = _mapper.Map<PermissionUpdateInputDto,Permission>(input,entity);
                 await _permissionRepository.SaveChangesAsync();
                 PermissionOutputDto result = _mapper.Map<PermissionOutputDto>(entity);
@@ -72,6 +75,10 @@ namespace BackendChallenge.Services
             try
             {
                 Permission entity = await _permissionRepository.GetByIdAsync(id);
+
+                if (entity == null)
+                    throw new Exception("The entity doesn't exists.");
+
                 await _permissionRepository.RemoveAsync(entity);
                 await _permissionRepository.SaveChangesAsync();
             }

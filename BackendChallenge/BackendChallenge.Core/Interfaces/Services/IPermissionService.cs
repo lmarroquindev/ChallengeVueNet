@@ -30,12 +30,13 @@ namespace BackendChallenge.Core.Interfaces.Services
         /// <summary>
         /// Modifies an existing <see cref="Permission"/> record in the database.
         /// </summary>
+        /// <param name="id">The unique identifier of the permission type.</param>
         /// <param name="input">The data to update the permission.</param>
         /// <returns>A task that represents the asynchronous operation of updating a permission.</returns>
-        Task<PermissionOutputDto> UpdateAsync(PermissionUpdateInputDto input);
+        Task<PermissionOutputDto> UpdateAsync(int id, PermissionUpdateInputDto input);
 
         /// <summary>
-        /// Deletes an existing <see cref="Permission"/> record from the database.
+        /// Delete an existing <see cref="Permission"/> record from the database.
         /// </summary>
         /// <param name="id">The identifier of the permission to delete.</param>
         /// <returns>A task that represents the asynchronous operation of deleting a permission.</returns>
