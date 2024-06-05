@@ -48,7 +48,7 @@ namespace BackendChallenge.RestApi.Controllers
         /// </summary>
         /// <param name="id">The unique identifier of the permission.</param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetAsync")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PermissionOutputDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -82,7 +82,7 @@ namespace BackendChallenge.RestApi.Controllers
             {
                 PermissionOutputDto result = await _permissionService.CreateAsync(inputData);
 
-                return CreatedAtAction(nameof(GetListAsync), new { id = result.Id }, result);
+                return CreatedAtRoute("GetAsync", new { id = result.Id }, result);
             }
 
             catch (Exception ex)
