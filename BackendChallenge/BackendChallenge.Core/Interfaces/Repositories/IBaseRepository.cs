@@ -25,7 +25,7 @@
         /// Removes an entity from the database.
         /// </summary>
         /// <param name="entity">The entity to remove.</param>
-        void RemoveAsync(TEntity entity);
+        Task RemoveAsync(TEntity entity);
 
         /// <summary>
         /// Saves all changes made to the entities in the database.

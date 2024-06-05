@@ -28,7 +28,7 @@ namespace BackendChallenge.Data.Repositories
         {
             await _dbContext.SaveChangesAsync();
         }
-        public void RemoveAsync(TEntity entity)
+        public async Task RemoveAsync(TEntity entity)
         {
             _dbContext.Set<TEntity>().Remove(entity);
         }
