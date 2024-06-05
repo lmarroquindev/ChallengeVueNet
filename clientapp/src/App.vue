@@ -1,7 +1,11 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <ListaPermisos></ListaPermisos>
-  <FormularioPermiso></FormularioPermiso>
+  <ListaPermisos
+    v-if="showList"
+    @edit-permission="editPermission"
+    @new-permission="newPermission"
+  />
+  <FormularioPermiso v-else :id="id" @close-form="cerrarFormulario" />
 </template>
 
 <script>
@@ -10,6 +14,27 @@ import FormularioPermiso from "./components/Permission/FormularioPermiso.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      showList: true,
+      id: null,
+    };
+  },
+  methods: {
+    newPermission() {
+      this.showList = false;
+      this.id = null;
+    },
+    editPermission(id) {
+      console.log(id);
+      this.showList = false;
+      this.id = id;
+    },
+    cerrarFormulario() {
+      this.showList = true;
+      this.id = null;
+    },
+  },
   components: {
     ListaPermisos,
     FormularioPermiso,
