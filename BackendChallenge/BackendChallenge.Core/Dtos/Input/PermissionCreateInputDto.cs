@@ -1,4 +1,5 @@
 ﻿using BackendChallenge.Core.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace BackendChallenge.Core.Dtos.Input
 {
@@ -7,16 +8,20 @@ namespace BackendChallenge.Core.Dtos.Input
     /// </summary>
     public class PermissionCreateInputDto
     {
-        /// <inheritdoc cref="Permission.FirstName"/>
-        public string FirstName { get; set; }
+        /// <inheritdoc cref="Permission.FirstNameEmployee"/>
+        [Required(ErrorMessage = "The first name of employee is required.")]
+        public string FirstNameEmployee { get; set; }
 
-        /// <inheritdoc cref="Permission.LastName"/>
-        public string LastName { get; set; }
+        /// <inheritdoc cref="Permission.LastNameEmployee"/>
+        [Required(ErrorMessage = "The last name of employee is required.")]
+        public string LastNameEmployee { get; set; }
 
         /// <inheritdoc cref="Permission.PermissionTypeId"/>
+        [Required(ErrorMessage = "The permission type is required.")]
         public int PermissionTypeId { get; set; }
 
         /// <inheritdoc cref="Permission.PermissionDate"/>
+        [Required(ErrorMessage = "The permission date is required.")]
         public DateTime PermissionDate { get; set; }
     }
 }

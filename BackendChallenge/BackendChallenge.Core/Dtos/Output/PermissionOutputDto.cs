@@ -10,11 +10,11 @@ namespace BackendChallenge.Core.Dtos.Output
         /// <inheritdoc cref="Permission.Id"/>
         public int Id { get; set; }
 
-        /// <inheritdoc cref="Permission.FirstName"/>
-        public string FirstName { get; set; }
+        /// <inheritdoc cref="Permission.FirstNameEmployee"/>
+        public string FirstNameEmployee { get; set; }
 
-        /// <inheritdoc cref="Permission.LastName"/>
-        public string LastName { get; set; }
+        /// <inheritdoc cref="Permission.LastNameEmployee"/>
+        public string LastNameEmployee { get; set; }
 
         /// <inheritdoc cref="Permission.PermissionTypeId"/>
         public int PermissionTypeId { get; set; }

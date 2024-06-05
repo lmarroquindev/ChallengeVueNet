@@ -15,8 +15,8 @@ namespace BackendChallenge.Data.Mapping
             builder.HasKey(x => x.Id);
 
             //Properties
-            builder.Property(x => x.FirstName).HasMaxLength(200).IsRequired();
-            builder.Property(x => x.LastName).HasMaxLength(200).IsRequired();
+            builder.Property(x => x.FirstNameEmployee).HasMaxLength(200).IsRequired();
+            builder.Property(x => x.LastNameEmployee).HasMaxLength(200).IsRequired();
             builder.Property(x => x.PermissionTypeId).IsRequired();
             builder.Property(x => x.PermissionDate).IsRequired();
 

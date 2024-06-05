@@ -14,12 +14,12 @@
         /// <summary>
         /// First name of the employee.
         /// </summary>
-        public string FirstName { get; set; }
+        public string FirstNameEmployee { get; set; }
 
         /// <summary>
         /// Last name of the employee.
         /// </summary>
-        public string LastName { get; set; }
+        public string LastNameEmployee { get; set; }
 
         /// <summary>
         /// Type of permission requested.
