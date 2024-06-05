@@ -1,6 +1,6 @@
 import { ref, onMounted } from "vue";
 
-export function useFetchData(url, httpMethod = "GET") {
+export function useFetchData(url, httpMethod = "GET", body = null) {
   const data = ref(null);
   const error = ref(null);
   const loading = ref(false);
@@ -9,10 +9,20 @@ export function useFetchData(url, httpMethod = "GET") {
 
   async function fetchData() {
     loading.value = true;
+
+    const requestOptions = {
+      method: httpMethod,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    if (body && (httpMethod === "POST" || httpMethod === "PUT")) {
+      requestOptions.body = JSON.stringify(body);
+    }
+
     try {
-      const response = await fetch(endpoint, {
-        method: httpMethod,
-      });
+      const response = await fetch(endpoint, requestOptions);
       if (!response.ok) {
         throw new Error("Error al cargar los datos");
       }
