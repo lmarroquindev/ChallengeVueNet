@@ -8,9 +8,12 @@
 
   <ItemGroup>
     <Folder Include="Extensions\" />
-    <Folder Include="Automapper\" />
     <Folder Include="Constants\" />
     <Folder Include="Exceptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
 </Project>
