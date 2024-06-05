@@ -408,8 +408,6 @@ FodyWeavers.xsd
 /.vscode
 *.sublime-workspace
 
-# Archivos de configuración de Vue CLI
-/.env.*.local
 
 # Archivos de registro de depuración
 npm-debug.log*
