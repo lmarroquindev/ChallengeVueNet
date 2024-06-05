@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendChallenge.Data", "Ba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendChallenge.Services", "BackendChallenge.Services\BackendChallenge.Services.csproj", "{AEA976ED-318B-48FF-9E68-AE821348CF6B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Architecture", "01 - Architecture", "{CCEA6E7D-28C5-46A2-9578-5FCAAF8D3C27}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Architecture", "01-Architecture", "{CCEA6E7D-28C5-46A2-9578-5FCAAF8D3C27}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Api", "02 - Api", "{EA09EC1F-1B95-40B6-8807-C5762B26078F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Api", "02-Api", "{EA09EC1F-1B95-40B6-8807-C5762B26078F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendChallenge.RestApi", "BackendChallenge.RestApi\BackendChallenge.RestApi.csproj", "{C8427F01-4329-4FDC-A4ED-7447A64E4A37}"
 EndProject
@@ -40,6 +40,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04561857-C774-4CBD-A5C9-3ADBA3E6A5FE} = {CCEA6E7D-28C5-46A2-9578-5FCAAF8D3C27}
+		{791ECC33-1FB2-4F61-AAC9-4F831891EA31} = {CCEA6E7D-28C5-46A2-9578-5FCAAF8D3C27}
+		{AEA976ED-318B-48FF-9E68-AE821348CF6B} = {CCEA6E7D-28C5-46A2-9578-5FCAAF8D3C27}
+		{C8427F01-4329-4FDC-A4ED-7447A64E4A37} = {EA09EC1F-1B95-40B6-8807-C5762B26078F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8BF86788-5C21-43AE-8579-31DC35C62D43}
