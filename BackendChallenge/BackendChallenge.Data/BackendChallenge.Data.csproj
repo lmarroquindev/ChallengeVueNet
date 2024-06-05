@@ -19,8 +19,4 @@
     <ProjectReference Include="..\BackendChallenge.Core\BackendChallenge.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>
